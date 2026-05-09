@@ -1,0 +1,58 @@
+body {
+  background-color: black;
+  font-family: Arial, sans-serif;
+}
+
+/* Center container */
+.login-container {
+  width: 320px;
+  margin: 100px auto;
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #141414;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Title */
+.login-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Input fields */
+.login-input {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Login button */
+.login-button {
+  padding: 10px;
+  background-color: #e50914; /* Netflix red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Google button */
+.google-button {
+  padding: 10px;
+  background-color: #db4437;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Divider */
+.divider {
+  text-align: center;
+  margin: 10px 0;
+  color: gray;
+}

@@ -1,0 +1,93 @@
+/* 🌑 Page Container */
+.watchlist-container {
+  background-color: #141414;
+  min-height: 100vh;
+  padding: 24px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* 🎬 Title */
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* 📦 Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* 🎥 Video Item Wrapper */
+.video-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 🎴 Card */
+.card {
+  cursor: pointer;
+  background: #1f1f1f;
+  border-radius: 10px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ✨ Hover Effect */
+.card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* 🖼 Thumbnail */
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+/* 📝 Title */
+.card p {
+  padding: 10px;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+/* 🔴 Button */
+.watchlist-btn {
+  background: #1a0b0b;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.1s ease;
+}
+
+/* 🔥 Button Hover */
+.watchlist-btn:hover {
+  background: #f40612;
+}
+
+/* 👇 Button Click Effect */
+.watchlist-btn:active {
+  transform: scale(0.95);
+}
+
+/* 🎬 Video Player (when mode="player") */
+.video-player {
+  width: 100%;
+  height: 70vh;
+  border: none;
+  border-radius: 10px;
+  background: black;
+}
