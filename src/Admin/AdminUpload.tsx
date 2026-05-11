@@ -29,6 +29,7 @@ function AdminUpload() {
 
       if (res.ok) {
         alert("🎉 Video uploaded!");
+        window.location.href = "/home"; // redirect to home after upload
         setFile(null);
       } else {
         alert("❌ Upload failed");

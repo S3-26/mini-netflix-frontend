@@ -31,7 +31,8 @@ body {
 }
 
 /* Login button */
-.login-button {
+.login-button,
+.signup-button {
   padding: 10px;
   background-color: #e50914; /* Netflix red */
   color: white;

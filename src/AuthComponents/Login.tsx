@@ -20,6 +20,19 @@ const Login = () => {
     }
   };
 
+  const handlesignup = async () => {
+    try {
+      await axios.post("http://localhost:8080/api/auth/signup", {
+        email,
+        password,
+      });
+      setEmail("");
+      setPassword("");
+    } catch (err) {
+      alert("Signup failed");
+    }
+  };
+
   const handleGoogleLogin = () => {
     window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
@@ -46,6 +59,9 @@ const Login = () => {
 
       <button className="login-button" onClick={handleLogin}>
         Login
+      </button>
+      <button className="signup-button" onClick={handlesignup}>
+        Signup
       </button>
 
       <div className="divider">OR</div>

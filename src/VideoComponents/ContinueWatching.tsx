@@ -6,6 +6,7 @@ type History = {
   title: string;
   progress: number;
   duration: number;
+  thumbnailPath: string;
 };
 
 const BASE_URL = "http://localhost:8080";
@@ -36,11 +37,15 @@ function ContinueWatching() {
 
           return (
             <div
+              className="card"
               key={h.fileName}
               style={{ cursor: "pointer" }}
               onClick={() => navigate(`/watch/${h.fileName}`)}
             >
-              <img src="https://via.placeholder.com/200x120" alt="thumbnail" />
+              <img
+                src={`http://localhost:8080/${h.thumbnailPath}`}
+                alt="thumbnail"
+              />
 
               {/* Progress Bar */}
               <div
