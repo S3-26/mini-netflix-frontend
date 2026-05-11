@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../config/api";
 
 type History = {
   fileName: string;
@@ -9,14 +10,12 @@ type History = {
   thumbnailPath: string;
 };
 
-const BASE_URL = "http://localhost:8080";
-
 function ContinueWatching() {
   const [history, setHistory] = useState<History[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/watch/continue`, {
+    fetch(`${API_BASE_URL}/api/watch/continue`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -42,10 +41,7 @@ function ContinueWatching() {
               style={{ cursor: "pointer" }}
               onClick={() => navigate(`/watch/${h.fileName}`)}
             >
-              <img
-                src={`http://localhost:8080/${h.thumbnailPath}`}
-                alt="thumbnail"
-              />
+              <img src={`${API_BASE_URL}/${h.thumbnailPath}`} alt="thumbnail" />
 
               {/* Progress Bar */}
               <div

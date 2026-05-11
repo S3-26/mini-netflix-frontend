@@ -6,6 +6,7 @@ import VideoItem from "../VideoComponents/VideoItem";
 import { IoSearchOutline } from "react-icons/io5";
 import { toggleWatchlist } from "../WatchlistComponents/WatchlistOperations";
 import ContinueWatching from "../VideoComponents/ContinueWatching";
+import API_BASE_URL from "../config/api";
 
 type Video = {
   id: number;
@@ -36,7 +37,7 @@ function Home() {
 
   // fetch videos once
   useEffect(() => {
-    fetch("http://localhost:8080/api/videos/all", {
+    fetch(`${API_BASE_URL}/api/videos/all`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -49,7 +50,7 @@ function Home() {
 
   // ✅ fetch watchlist once
   useEffect(() => {
-    fetch("http://localhost:8080/api/watchlist", {
+    fetch(`${API_BASE_URL}/api/watchlist`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./AdminUpload.css";
+import API_BASE_URL from "../config/api";
 
 function AdminUpload() {
   const [file, setFile] = useState<File | null>(null);
@@ -19,7 +20,7 @@ function AdminUpload() {
     try {
       setLoading(true);
 
-      const res = await fetch("http://localhost:8080/api/videos/upload", {
+      const res = await fetch(`${API_BASE_URL}/api/videos/upload`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`, // optional if secured

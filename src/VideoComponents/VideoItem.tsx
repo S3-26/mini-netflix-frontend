@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../config/api";
 
 type Video = {
   id: number;
@@ -15,20 +16,18 @@ type Props = {
   onToggle?: (videoId: number) => void;
 };
 
-const BASE_URL = "http://localhost:8080";
-
 function VideoItem({ video, mode = "card", isInWatchlist, onToggle }: Props) {
   const navigate = useNavigate();
   const lastSavedRef = useRef(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const videoUrl = `${BASE_URL}/api/videos/${video.fileName}`;
+  const videoUrl = `${API_BASE_URL}/api/videos/${video.fileName}`;
 
   // ⏯ Resume playback
   useEffect(() => {
     if (!video) return;
 
-    fetch(`${BASE_URL}/api/watch/progress?fileName=${video.fileName}`, {
+    fetch(`${API_BASE_URL}/api/watch/progress?fileName=${video.fileName}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -62,11 +61,14 @@ function VideoItem({ video, mode = "card", isInWatchlist, onToggle }: Props) {
         autoPlay
         onLoadedMetadata={() => {
           // 🔥 Ensures metadata loaded before seeking
-          fetch(`${BASE_URL}/api/watch/progress?fileName=${video.fileName}`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+          fetch(
+            `${API_BASE_URL}/api/watch/progress?fileName=${video.fileName}`,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
             },
-          })
+          )
             .then((res) => res.json())
             .then((savedTime) => {
               if (videoRef.current && savedTime > 0) {
@@ -82,7 +84,7 @@ function VideoItem({ video, mode = "card", isInWatchlist, onToggle }: Props) {
             lastSavedRef.current = current;
 
             fetch(
-              `${BASE_URL}/api/watch/progress?&fileName=${video.fileName}&progress=${current}&duration=${duration}`,
+              `${API_BASE_URL}/api/watch/progress?&fileName=${video.fileName}&progress=${current}&duration=${duration}`,
               {
                 method: "POST",
                 headers: {
@@ -103,10 +105,7 @@ function VideoItem({ video, mode = "card", isInWatchlist, onToggle }: Props) {
         className="card"
         onClick={() => navigate(`/watch/${video.fileName}`)}
       >
-        <img
-          src={`http://localhost:8080/${video.thumbnailPath}`}
-          alt="thumbnail"
-        />
+        <img src={`${API_BASE_URL}/${video.thumbnailPath}`} alt="thumbnail" />
         <p>{video.title}</p>
       </div>
 

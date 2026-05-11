@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./Login.css";
+import API_BASE_URL from "../config/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,7 +9,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:8080/api/auth/login", {
+      const res = await axios.post(`${API_BASE_URL}/api/auth/login`, {
         email,
         password,
       });
@@ -22,7 +23,7 @@ const Login = () => {
 
   const handlesignup = async () => {
     try {
-      await axios.post("http://localhost:8080/api/auth/signup", {
+      await axios.post(`${API_BASE_URL}/api/auth/signup`, {
         email,
         password,
       });
@@ -34,7 +35,7 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    window.location.href = `${API_BASE_URL}/oauth2/authorization/google`;
   };
 
   return (

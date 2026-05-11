@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import VideoItem from "./VideoItem";
 import "./Watch.css";
+import API_BASE_URL from "../config/api";
 
 type Video = {
   id: number;
@@ -9,8 +10,6 @@ type Video = {
   fileName: string;
   thumbnailPath: string;
 };
-
-const BASE_URL = "http://localhost:8080";
 
 function Watch() {
   const { fileName } = useParams();
@@ -21,7 +20,7 @@ function Watch() {
   useEffect(() => {
     if (!fileName) return;
 
-    fetch(`${BASE_URL}/api/videos/meta/${fileName}`, {
+    fetch(`${API_BASE_URL}/api/videos/meta/${fileName}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
